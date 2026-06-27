@@ -27,7 +27,7 @@
                                     </v-col>
                                 </v-row>
                             </v-form>
-                            <nuxt-link to="/"><p class="text-decoration-none text-blue">หากไม่มีบัญชี? <v-chip color="primary" prepend-icon="mdi-account">สมัครสมาชิก</v-chip></p></nuxt-link>
+                            <nuxt-link to="/regis"><p class="text-decoration-none text-blue">หากไม่มีบัญชี? <v-chip color="primary" prepend-icon="mdi-account">สมัครสมาชิก</v-chip></p></nuxt-link>
                         </v-card-text>
 
                     </v-card>
@@ -80,6 +80,7 @@ const login = async()=>{
         
     }
 }
+
 
 </script>
 

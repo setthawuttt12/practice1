@@ -7,7 +7,7 @@
                 <v-card color="#7d0c14">
                     
                     <v-card-title class="text-center">
-                        <center><v-img src="/img/logo2.png" width="20%"></v-img></center>
+                        <center><v-img src="/img/logo2.png" width="10%"></v-img></center>
                         <h1>สมัครสมาชิก</h1>
                     </v-card-title>
                     <v-card-text class="bg-white">
@@ -130,6 +130,11 @@ const saveMember = async()=>{
 
 }
 
+definePageMeta({
+
+    layout:false
+
+})
 
 
 </script>
