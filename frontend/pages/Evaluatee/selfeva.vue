@@ -2,7 +2,7 @@
 <v-container>
     <v-row>
         <v-col cols="12">
-            <v-form  @submit.prevent="saveScore">
+            <v-form v-if="user.status_eva === 1"  @submit.prevent="saveScore">
                 <h1 class="text-h5 font-weight-bold">แบบประเมินตนเอง</h1>
                 <v-card class="pa-2 mt-2">
                     <p>ชื่อ - นามสกุล : {{ user.first_name }} {{ user.last_name }}</p>
@@ -28,8 +28,8 @@
                 <v-btn type="submit" color="blue">บันทึกคะแนน</v-btn>
             </div>
             </v-form>
-            <!-- <v-alert type="success" v-else-if="user.status_eva === 2 || user.status_eva === 3">ประเมินสำเร็จ</v-alert>
-            <v-alert type="warning" v-else>ยังไม่มีแบบประเมิน</v-alert> -->
+            <v-alert type="success" v-else-if="user.status_eva === 2 || user.status_eva === 3">ประเมินสำเร็จ</v-alert>
+            <v-alert type="warning" v-else>ยังไม่มีแบบประเมิน</v-alert>
         </v-col>
     </v-row>
 </v-container>
@@ -45,7 +45,7 @@ const topics = ref<any>([])
 const fetchUser = async()=>{
     const token = localStorage.getItem('token')
     try {
-        const res = await axios.get(`${eva}/selfeva/topic`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${eva}/selfeva/user`,{headers:{Authorization:`Bearer ${token}`}})
         user.value = res.data
     } catch (error) {
          console.error('Error Get User',error)
@@ -75,7 +75,7 @@ const saveScore = async()=>{
     const token = localStorage.getItem('token')
     const formData = new FormData()
     const allScore = topics.value.flatMap((t:any)=>
-        t.indicate.map((i:any)=>{
+        t.indicates.map((i:any)=>{
             const key = `${t.id_topic}-${i.id_indicate}`
             const file = fileMap.value[key]
             if(file)formData.append(`file_${key}`,file)
@@ -92,7 +92,7 @@ if(allScore.some((s:any)=> !s.score)){
     alert('กรุณากรอกคะแนนให้สมบุรณ์')
     return
 }
-formData.append('score',JSON.stringify(allScore))
+formData.append('scores',JSON.stringify(allScore))
 try {
     await axios.post(`${eva}/selfeva/save`,formData,{headers:{Authorization:`Bearer ${token}`}})
     alert('ประเมินสำเร็จ')
