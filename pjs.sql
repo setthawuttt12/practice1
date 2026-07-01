@@ -16,6 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `tb_commit`
+--
+
+DROP TABLE IF EXISTS `tb_commit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_commit` (
+  `id_commit` int NOT NULL AUTO_INCREMENT,
+  `id_member` int DEFAULT NULL,
+  `id_eva` int DEFAULT NULL,
+  `status_commit` varchar(100) DEFAULT NULL,
+  `level_commit` varchar(100) DEFAULT NULL,
+  `detail_commit` text,
+  `signature` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_commit`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_commit`
+--
+
+LOCK TABLES `tb_commit` WRITE;
+/*!40000 ALTER TABLE `tb_commit` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tb_commit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_eva`
 --
 
@@ -40,8 +68,36 @@ CREATE TABLE `tb_eva` (
 
 LOCK TABLES `tb_eva` WRITE;
 /*!40000 ALTER TABLE `tb_eva` DISABLE KEYS */;
-INSERT INTO `tb_eva` VALUES (1,1,1,1,'2025-05-26',NULL,NULL);
+INSERT INTO `tb_eva` VALUES (1,1,1,2,'2025-05-26',36.00,NULL);
 /*!40000 ALTER TABLE `tb_eva` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_evadetail`
+--
+
+DROP TABLE IF EXISTS `tb_evadetail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_evadetail` (
+  `id_eva` int DEFAULT NULL,
+  `id_indicate` int DEFAULT NULL,
+  `status_eva` varchar(1) DEFAULT NULL,
+  `detail_eva` text,
+  `score_member` int DEFAULT NULL,
+  `score_commit` int DEFAULT NULL,
+  `file_eva` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_evadetail`
+--
+
+LOCK TABLES `tb_evadetail` WRITE;
+/*!40000 ALTER TABLE `tb_evadetail` DISABLE KEYS */;
+INSERT INTO `tb_evadetail` VALUES (1,1,'1','goods',2,NULL,'1782920168771hyyr1jttr9.png'),(1,2,'1','damnn',4,NULL,'1782920168771rwvqj5uywu.png');
+/*!40000 ALTER TABLE `tb_evadetail` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -54,9 +110,9 @@ DROP TABLE IF EXISTS `tb_indicate`;
 CREATE TABLE `tb_indicate` (
   `id_indicate` int NOT NULL AUTO_INCREMENT,
   `id_topic` int DEFAULT NULL,
-  `nane_indicate` varchar(100) DEFAULT NULL,
+  `name_indicate` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `detail_indicate` text,
-  `ponit_indicate` int DEFAULT NULL,
+  `point_indicate` int DEFAULT NULL,
   `check_indicate` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`id_indicate`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -167,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-27 17:43:04
+-- Dump completed on 2026-07-02  0:04:55
