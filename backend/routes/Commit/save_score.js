@@ -61,7 +61,6 @@ router.post('/save/:id_eva',verifyToken,requireRole('กรรมการปร
         }
         const [[sumRow]] = await db.query(`select coalesce(sum(score_commit*(select i.point_indicate from tb_indicate i where i.id_indicate=d.id_indicate)),0) as total from tb_evadetail d where d.id_eva=?`,[id_eva])
         await db.query(`update tb_eva set total_commit=? where id_eva=?`,[sumRow.total,id_eva])
-        await db.query('update tb_eva set total_commit=? where id_eva=?',[sumRow.total,id_eva])
         await db.query('update tb_commit set detail_commit=?,status_commit=? where id_eva=? and id_member=?',[detail_commit,'y',id_eva,id_member])
         res.json({message:'Post scoer Success'})
     } catch (error) {

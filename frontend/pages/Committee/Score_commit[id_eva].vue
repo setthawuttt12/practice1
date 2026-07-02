@@ -47,10 +47,10 @@ const topics = ref<any>([])
 const id_eva = useRoute().params.id_eva
 const totalScore = ref(0)
 
-const viweFile =(filename:string) =>{
-    const url = `http://localhost:3001/uploads/evadetail/${filename}`
-    window.open(url,'_blank')
-}
+// const viweFile =(filename:string) =>{
+//     const url = `http://localhost:3001/uploads/evadetail/${filename}`
+//     window.open(url,'_blank')
+// }
 
 const fetchUser = async () =>{
     const token = localStorage.getItem('token')
