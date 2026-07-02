@@ -44,6 +44,32 @@ LOCK TABLES `tb_commit` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tb_doc`
+--
+
+DROP TABLE IF EXISTS `tb_doc`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tb_doc` (
+  `id_doc` int NOT NULL AUTO_INCREMENT,
+  `name_doc` varchar(100) DEFAULT NULL,
+  `day_doc` date DEFAULT NULL,
+  `file` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_doc`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_doc`
+--
+
+LOCK TABLES `tb_doc` WRITE;
+/*!40000 ALTER TABLE `tb_doc` DISABLE KEYS */;
+INSERT INTO `tb_doc` VALUES (1,'jaja','2025-06-06',NULL);
+/*!40000 ALTER TABLE `tb_doc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tb_eva`
 --
 
@@ -145,7 +171,7 @@ CREATE TABLE `tb_member` (
   `role` enum('ฝ่ายบุคลากร','กรรมการประเมิน','ผู้รับการประเมินผล') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `pic_user` text,
   PRIMARY KEY (`id_member`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +180,7 @@ CREATE TABLE `tb_member` (
 
 LOCK TABLES `tb_member` WRITE;
 /*!40000 ALTER TABLE `tb_member` DISABLE KEYS */;
-INSERT INTO `tb_member` VALUES (1,'test','test','pjsE','$2b$10$vSwB0umyhIfUaUXAgcj5ueuzKYd/1qLNjyHykikmCvaJxa/cMuSeS','test@gmail.com','ผู้รับการประเมินผล',NULL);
+INSERT INTO `tb_member` VALUES (1,'test','test','pjsE','$2b$10$vSwB0umyhIfUaUXAgcj5ueuzKYd/1qLNjyHykikmCvaJxa/cMuSeS','test@gmail.com','ผู้รับการประเมินผล',NULL),(2,'pjsC1','pjsC1','pjsc1','$2b$10$glgOc5vmcj/d/tTyDO1CQu/68/Q74zy1pjux7tJ6EXARRU.fo5hnm','pjsc@gmail.com','กรรมการประเมิน',NULL);
 /*!40000 ALTER TABLE `tb_member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,4 +249,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-02  0:04:55
+-- Dump completed on 2026-07-02 16:51:15
