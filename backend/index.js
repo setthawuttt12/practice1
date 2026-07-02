@@ -33,6 +33,9 @@ app.use('/api/Commit/score_member',score_member2)
 const save_score = require('./routes/Commit/save_score')
 app.use('/api/Commit/save_score',save_score)
 
+const check_confirm = require('./routes/Commit/check_confirm')
+app.use('/api/Commit/check_confirm',check_confirm)
+
 ///Eva
 const edit_eva = require('./routes/Eva/edit_eva')
 app.use('/api/Eva/edit_eva',edit_eva)

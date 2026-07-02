@@ -22,12 +22,12 @@
                             <td class="text-center border">{{ index+1 }}</td>
                             <td class="text-center border">{{ items.first_name }}</td>
                             <td class="text-center border">{{ items.last_name }}</td>
-                            <td class="text-center border">{{ items.day_eva }}</td>
+                            <td class="text-center border">{{ items.date_eva }}</td>
                             <td class="text-center border">รอบการประเมินที่{{ items.round_sys }} ปี {{ year_sys }}</td>
-                            <td class="text-center border"><v-btn color="blue" class="text-white" size="small" @click="click(items.id_eva)">ตรวจสอบ</v-btn></td>
+                            <td class="text-center border"><v-btn color="blue" class="text-white" size="small" @click="go(items.id_eva)">ตรวจสอบ</v-btn></td>
                             <td class="text-center border">
                                <v-btn v-if="items.signature" color="success" class="text-white" size="smail" @click="go(items.id_eva)">ยืนยันผลแล้ว</v-btn>
-                               <v-btn v-else color="blue" class="text-white" size="smail" @click="go(items.id_eva)">ยืนยันผล</v-btn>
+                               <v-btn v-else color="blue" class="text-white" size="smail" @click="check(items.id_eva)">ยืนยันผล</v-btn>
                             </td>
                         </tr>
                         <tr v-if="result.length === 0">
@@ -56,6 +56,8 @@ const fetch = async () => {
         console.error("Error Fetching",err)
     }
 }
+
+
 
 const go = (id_eva:number) => {
     navigateTo({path:`/Committee/Signature${id_eva}`})
