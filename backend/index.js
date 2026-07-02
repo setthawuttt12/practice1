@@ -23,6 +23,10 @@ app.use('/api/profile',profile)
 const docnoe = require('./routes/docnoe')
 app.use('/api/docnoe',docnoe)
 
+//commit api
+const show_eva = require('./routes/Commit/show_eva')
+app.use('/api/Commit/show_eva',show_eva)
+
 ///Eva
 const edit_eva = require('./routes/Eva/edit_eva')
 app.use('/api/Eva/edit_eva',edit_eva)

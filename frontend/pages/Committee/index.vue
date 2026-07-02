@@ -55,6 +55,7 @@ const fetch = async () => {
 const go = (id_eva:number) =>   {
     navigateTo({path:`/Committee/Score_member${id_eva}`})
 }
+onMounted(fetch)
 </script>
 
 <style scoped>
